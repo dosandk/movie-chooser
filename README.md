@@ -25,6 +25,8 @@ Create web application that helps find and choose movie according user preferenc
 * [Jest](https://facebook.github.io/jest/) - unit testing
 * [SASS](http://sass-lang.com/) - CSS with superpowers 
 * [Material-ui](http://www.material-ui.com) - Set of react components
+* [Reselect](https://github.com/reactjs/reselect) - library for slectors memoization
+* [Redux-sage](https://github.com/redux-saga/redux-saga) - library for making side effects (i.e. asynchronous things)
 
 For additional information please see "package.json" file;
 
@@ -43,5 +45,9 @@ User should have ability resort saved movies collections. When size of collectio
 one movie - system should notify user about and of choice and offer to see this movie.
 
 # Additional features list
+
+* social sharing of chosen movie or movies collection
+* ability to save/share review for movie
+* parallel sorting  of  chosen collection with friends (backend needed)
 
 Will be discussed...
