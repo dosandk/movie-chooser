@@ -1,18 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import App from './app';
-import Counter from './counter';
-import TestComponent from '../components/test';
-import LoginContainer from '../containers/login';
+import MainPage from '../components/mainPage';
 
 const Routes = () => {
   return (
     <div>
       <Route component={ App } />
       <Switch>
-        <Route path='/test' component={ TestComponent } />
-        <Route path='/counter' component={ Counter } />
-        <Route path='/login' component={ LoginContainer } />
+        <Route path='/' component={ MainPage } />
       </Switch>
     </div>
   );
