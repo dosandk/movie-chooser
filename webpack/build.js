@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -8,9 +9,9 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, '../')
+    path: path.resolve(__dirname, '../build')
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -57,22 +58,23 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': process.env.hasOwnProperty('NODE_ENV') ? process.env.NODE_ENV : JSON.stringify('development')
+      'process.env.NODE_ENV': process.env.hasOwnProperty('NODE_ENV') ? process.env.NODE_ENV : JSON.stringify('production')
     }),
     new HtmlWebpackPlugin({
       template: path.resolve('./index.html')
     }),
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../fonts'),
+        to: path.resolve(__dirname, '../build/fonts')
+      }
+    ])
   ],
   resolve: {
     alias: {
       styles: path.resolve(__dirname, '../styles/')
     }
-  },
-  devServer: {
-    contentBase: path.join(__dirname, '../'), // match the output path
-    compress: true,
-    port: 3001,
-    historyApiFallback: true
   }
 };
