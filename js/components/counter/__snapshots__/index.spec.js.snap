@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div>
+    Clicked: 
+     times
+     
+    <button
+      onClick={undefined}
+    >
+      +
+    </button>
+     
+    <button
+      onClick={undefined}
+    >
+      -
+    </button>
+     
+    <button
+      onClick={undefined}
+    >
+      Increment if odd
+    </button>
+  </div>
+  <div>
+    <h3>
+      Loader
+    </h3>
+    <button
+      onClick={undefined}
+    >
+      show temporary
+    </button>
+    <button
+      onClick={undefined}
+    >
+      show loader
+    </button>
+    <button
+      onClick={undefined}
+    >
+      hide loader
+    </button>
+  </div>
+</div>
+`;

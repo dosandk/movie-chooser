@@ -1,1 +1,6 @@
-.idea/
+.idea
+dist/
+npm-debug.log
+node_modules/
+coverage/
+yarn-error.log
