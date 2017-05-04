@@ -5,9 +5,16 @@ import MovieDetails from '../components/movieDetails';
 class MovieDetailsContainer extends Component {
   render() {
     return (
-      <MovieDetails/>
+      <MovieDetails {...this.props}/>
     );
   }
 }
 
-export default connect()(MovieDetailsContainer);
+function mapStateToProps(state) {
+  console.log(state.movies);
+  return {
+    movies: state.movies
+  };
+}
+
+export default connect(mapStateToProps)(MovieDetailsContainer);

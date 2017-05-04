@@ -1,5 +1,6 @@
 export {
-  post
+  post,
+  get
 };
 
 function post(url, data) {
@@ -8,5 +9,11 @@ function post(url, data) {
     headers: {'Content-type': 'application/json'},
     credentials: 'include',
     body: JSON.stringify(data)
+  }));
+}
+
+function get(url) {
+  return fetch(new Request(url, {
+    method: 'GET'
   }));
 }

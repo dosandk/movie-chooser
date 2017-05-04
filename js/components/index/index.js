@@ -7,15 +7,6 @@ const Index = () => (
     <Link to="/">
       <ListItem primaryText="Home" />
     </Link>
-    <Link to="/test">
-      <ListItem primaryText="Test Component"/>
-    </Link>
-    <Link to="/counter">
-      <ListItem primaryText="Counter" />
-    </Link>
-    <Link to="/login">
-      <ListItem primaryText="Login" />
-    </Link>
   </List>
 );
 
