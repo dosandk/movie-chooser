@@ -24,15 +24,14 @@ function filterRequestError(error) {
   };
 }
 
-export function searchMovies() {
+export function searchMovies(searchMovie) {
   return dispath => {
     dispath(filterRequestStarted());
     dispath(showLoader());
-    return get('http://www.omdbapi.com/?t=Walking+Dead&y=2012&plot=full')
+    return get(`http://www.omdbapi.com/?s=${searchMovie}&plot=full`)
       .then(response => {
         return response.json()
           .then(data => {
-            console.log('response:', data);
             dispath(hideLoader());
             return dispath(filterRequestFinished(data));
           });

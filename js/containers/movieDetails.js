@@ -5,15 +5,16 @@ import MovieDetails from '../components/movieDetails';
 class MovieDetailsContainer extends Component {
   render() {
     return (
-      <MovieDetails {...this.props}/>
+      <div>
+        {this.props.movie && <MovieDetails {...this.props}/>}
+      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state.movies);
   return {
-    movies: state.movies
+    movie: state.selectedMovie
   };
 }
 
