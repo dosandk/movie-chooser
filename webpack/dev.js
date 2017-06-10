@@ -58,7 +58,8 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': process.env.hasOwnProperty('NODE_ENV') ? process.env.NODE_ENV : JSON.stringify('development')
+      'process.env.NODE_ENV': process.env.hasOwnProperty('NODE_ENV') ? process.env.NODE_ENV : JSON.stringify('development'),
+      'process.env.OMDB_API_KEY': process.env.hasOwnProperty('OMDB_API_KEY') ? JSON.stringify(process.env.OMDB_API_KEY) : JSON.stringify(''),
     }),
     new HtmlWebpackPlugin({
       template: path.resolve('./index.html')

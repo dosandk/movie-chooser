@@ -231,8 +231,7 @@
     "yield-star-spacing": [2, {"before": true, "after": true}] //enforce spacing around the * in yield* expressions (fixable)
   },
   "globals": {
-    "eld": true,
-    "APP_CONFIG": true
+    "eld": true
   },
   "parserOptions": {
     "sourceType": "module",

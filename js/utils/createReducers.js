@@ -1,5 +1,6 @@
 export {
-  createReducers
+  createReducers,
+  createReducer
 };
 
 function createReducers(reducerObj) {

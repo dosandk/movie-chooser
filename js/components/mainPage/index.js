@@ -8,7 +8,7 @@ const mainPage = () => {
     <div>
       <MovieDetailsContainer/>
       <Filter/>
-      <Carousel/>
+      <Carousel movies={[]}/>
     </div>
   );
 };
