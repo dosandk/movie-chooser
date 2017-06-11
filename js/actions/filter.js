@@ -34,14 +34,16 @@ function filterRequestError(error) {
   };
 }
 
-function searchMovies() {
-  const query = {
+function searchMovies(query) {
+  const queryObj = {
     api_key: process.env.OMDB_API_KEY,
     language: 'en-US',
+    query,
     page: 1
   };
 
-  const api = `https://api.themoviedb.org/3/movie/popular?${queryString.stringify(query)}`;
+
+  const api = `https://api.themoviedb.org/3/search/movie?${queryString.stringify(queryObj)}`;
 
   return dispath => {
     dispath(filterRequestStarted());
