@@ -32,7 +32,7 @@ For additional information please see "package.json" file;
 
 # Details project description
 
-Application should loads list of movies items from one of movies database (e.g. [imdb](http://www.omdbapi.com/)). User has
+Application should loads list of movies items from one of movies database (e.g. [omdb](http://www.omdbapi.com/)). User has
 ability to set some options (e.g. title and/or year and/or genre etc.)  
 
 Additionally user should have ability:

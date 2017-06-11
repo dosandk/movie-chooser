@@ -1,7 +1,7 @@
-import {FILTER_REQUEST_FINISHED} from '../constants/filter';
+import {FILTER_REQUEST_SUCCESS} from '../constants/filter';
 
 export default {
-  [FILTER_REQUEST_FINISHED]: (state, {payload}) => {
+  [FILTER_REQUEST_SUCCESS]: (state, {payload}) => {
     return payload.movies;
   }
 };

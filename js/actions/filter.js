@@ -1,4 +1,4 @@
-import {FILTER_REQUEST_STARTED, FILTER_REQUEST_FINISHED, FILTER_REQUEST_ERROR} from '../constants/filter';
+import {FILTER_REQUEST_STARTED, FILTER_REQUEST_SUCCESS, FILTER_REQUEST_ERROR} from '../constants/filter';
 import {showLoader, hideLoader} from './loader';
 import {get} from '../utils/fetch';
 import queryString from 'query-string';
@@ -18,7 +18,7 @@ function filterRequestStarted() {
 
 function filterRequestFinished(movies) {
   return {
-    type: FILTER_REQUEST_FINISHED,
+    type: FILTER_REQUEST_SUCCESS,
     payload: {
       movies
     }
@@ -48,6 +48,8 @@ function searchMovies() {
     dispath(showLoader());
     return get(api)
       .then(response => {
+        if (response.status !== 200) return Promise.reject(response);
+
         return response.json()
           .then(data => {
             dispath(hideLoader());
@@ -56,7 +58,8 @@ function searchMovies() {
       })
       .catch(error => {
         dispath(hideLoader());
-        return dispath(filterRequestError(error));
+
+        return error.text().then(text => dispath(filterRequestError(text)));
       });
   };
 }
