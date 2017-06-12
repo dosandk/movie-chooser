@@ -2,10 +2,11 @@ import React from 'react';
 import MovieDetailsContainer from '../../containers/movieDetails';
 import Filter from '../../containers/filter';
 import Carousel from '../../containers/carousel';
+import styles from './mainPage.scss';
 
 const mainPage = () => {
   return (
-    <div>
+    <div className={styles['main-page-wrapper']}>
       <MovieDetailsContainer/>
       <Filter/>
       <Carousel/>
