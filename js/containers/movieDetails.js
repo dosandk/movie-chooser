@@ -5,9 +5,7 @@ import MovieDetails from '../components/movieDetails';
 class MovieDetailsContainer extends Component {
   render() {
     return (
-      <div>
-        {this.props.movie && <MovieDetails {...this.props}/>}
-      </div>
+      <MovieDetails {...this.props}/>
     );
   }
 }

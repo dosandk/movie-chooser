@@ -19,7 +19,7 @@ class Carousel extends Component {
   render() {
     return (
       <div>
-        {this.props.movies && this.props.movies.map(movie =>
+        {this.props.movies.map(movie =>
           <CarouselItemContainer key={movie.imdbID} movie={movie}/>
         )}
       </div>

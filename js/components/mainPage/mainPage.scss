@@ -1,0 +1,13 @@
+.main-page-wrapper {
+  border: 2px solid red;
+  display: flex;
+  flex-flow: row wrap;
+
+  //& > * {
+  //  border: 1px solid green;
+  //}
+
+  & > *:last-child {
+    flex: 1 100%;
+  }
+}
