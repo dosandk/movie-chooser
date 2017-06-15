@@ -1,13 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {List, ListItem} from 'material-ui/List';
+import MenuList from '../menuList';
 
 const Index = () => (
-  <List>
-    <Link to="/">
-      <ListItem primaryText="Home" />
-    </Link>
-  </List>
+  <MenuList />
 );
 
 export default Index;
