@@ -1,0 +1,21 @@
+.sandwich-button {
+    display: none;
+    margin-left: 15px;
+    margin-top: 10px;
+
+    @media screen and (max-width: 414px){
+        display: inline-block;
+    }
+}
+
+.menu-list {
+    overflow: hidden;
+    width: 100%;
+    transition-property: width;
+    transition-duration: 300ms;
+    transition-timing-function: linear;
+}
+
+.menu-list--hidden {
+    width: 0;
+}

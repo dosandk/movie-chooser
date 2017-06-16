@@ -6,7 +6,7 @@ import styles from './menuItem.scss';
 const MenuItem = ({linkTo, text, icon}) => {
   return (
     <Link className={styles['menu-link']} to={linkTo}>
-      <ListItem primaryText={text} leftIcon={icon}/>
+      <ListItem primaryText={text} leftIcon={icon} />
     </Link>
   );
 };
