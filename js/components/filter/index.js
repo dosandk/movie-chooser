@@ -1,13 +1,17 @@
 import React, {Component} from 'react';
 import styles from './filter.scss';
 import {TextField, Slider, SelectField, MenuItem} from 'material-ui';
+import genres from '../../config/genres-config';
 
 class Filter extends Component {
   constructor(props) {
     super(props);
 
+    this.minYear = 1970;
+    this.maxYear = new Date().getFullYear();
+
     this.state = {
-      filterYear: new Date().getFullYear(),
+      filterYear: this.maxYear,
       sliderCoords: {
         top: 0,
         left: 0
@@ -18,6 +22,7 @@ class Filter extends Component {
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
     this.handleGenreChange = this.handleGenreChange.bind(this);
+    this.renderGenresOptionList = this.renderGenresOptionList.bind(this);
   }
 
   handleBtnClick() {
@@ -46,11 +51,13 @@ class Filter extends Component {
     };
   }
 
+  renderGenresOptionList() {
+    return genres.map((genre, key) => <MenuItem value={key} primaryText={genre}/>);
+  }
+
   render() {
-    const minYear = 1970;
-    const maxYear = new Date().getFullYear();
     return (
-      <div className={styles['filter']}>
+      <div className={styles.filter}>
         <TextField
           hintText="Movie title"
           type="text"
@@ -66,29 +73,22 @@ class Filter extends Component {
           {this.state.filterYear}
         </div>}
         <Slider
-          min={minYear}
-          max={maxYear}
+          min={this.minYear}
+          max={this.maxYear}
           step={1}
           defaultValue={2017}
           value={this.state.filterYear}
           onChange={this.handleSliderChange}
         />
         <div className={styles['year-range']}>
-          <div>{minYear}</div>
-          <div>{maxYear}</div>
+          <div>{this.minYear}</div>
+          <div>{this.maxYear}</div>
         </div>
         <SelectField
           value={this.state.movieGenre}
           onChange={this.handleGenreChange}
         >
-          <MenuItem value={1} primaryText="Genres"/>
-          <MenuItem value={2} primaryText="Action"/>
-          <MenuItem value={3} primaryText="Comedy"/>
-          <MenuItem value={4} primaryText="Family"/>
-          <MenuItem value={5} primaryText="History"/>
-          <MenuItem value={6} primaryText="Mystery"/>
-          <MenuItem value={7} primaryText="Sci-fi"/>
-          <MenuItem value={8} primaryText="War"/>
+          {this.renderGenresOptionList()}
         </SelectField>
         <button onClick={this.handleBtnClick}>Search</button>
       </div>
