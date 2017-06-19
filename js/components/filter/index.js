@@ -11,7 +11,13 @@ class Filter extends Component {
     this.props.searchMovies(this.searchInput.value);
   }
 
+  get fullYear() {
+    return new Date().getFullYear();
+  }
+
   render() {
+    console.error('full year', this.fullYear);
+
     return (
       <div>Filter
         <input type="text"
