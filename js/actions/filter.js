@@ -36,7 +36,7 @@ function filterRequestError(error) {
 
 function searchMovies(query) {
   const queryObj = {
-    api_key: process.env.OMDB_API_KEY,
+    'api_key': process.env.OMDB_API_KEY,
     language: 'en-US',
     query,
     page: 1

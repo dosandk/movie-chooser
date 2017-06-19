@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {bindActionCreators} from 'redux';
 import * as carouselItemActions from '../actions/carouselItem';
 import CarouselItemContainer from './carouselItem';
 
 class Carousel extends Component {
   constructor(props) {
     super(props);
+
+    this.renderCarouselList = this.renderCarouselList.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -16,12 +18,14 @@ class Carousel extends Component {
     }
   }
 
+  renderCarouselList() {
+    return this.props.movies.map(movie => <CarouselItemContainer key={movie.imdbID} movie={movie}/>);
+  }
+
   render() {
     return (
       <div>
-        {this.props.movies && this.props.movies.map(movie =>
-          <CarouselItemContainer key={movie.imdbID} movie={movie}/>
-        )}
+        {this.renderCarouselList()}
       </div>
     );
   }

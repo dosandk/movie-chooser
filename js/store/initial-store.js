@@ -1,6 +1,13 @@
 const initialStore = {
-  // favoriteMovies: [],
-  // moviesCollections: []
+  favoriteMovies: [],
+  moviesCollections: [],
+  movies: {
+    Search: []
+  },
+  selectedMovie: {
+    Title: '',
+    Poster: null
+  }
 };
 
 export default initialStore;

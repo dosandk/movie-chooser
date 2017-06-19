@@ -1,0 +1,9 @@
+.main-page-wrapper {
+  border: 2px solid red;
+  display: flex;
+  flex-flow: row wrap;
+
+  & > *:last-child {
+    flex: 1 100%;
+  }
+}
