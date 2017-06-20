@@ -1,3 +1,4 @@
+
 import React from 'react';
 import MenuItem from '../menuItem';
 import { List } from 'material-ui/List';
@@ -16,12 +17,10 @@ const MenuList = () => {
       </div>
       <List className={styles['menu-list']}>
         <MenuItem linkTo = '/' text = 'Home' icon = {<ActionHome color='#000'/>}/>
-        <MenuItem linkTo = '/my-movies-collections' text = 'My Movies Collections' icon = {<ImageCollections color='#000'/>}/>
-        <MenuItem linkTo = '/my-favorite-movies' text = 'My favorite movies' icon = {<ActionGrade color='#000'/>}/>
+        <MenuItem linkTo = '/collections' text = 'My Movies Collections' icon = {<ImageCollections color='#000'/>}/>
+        <MenuItem linkTo = '/favorite' text = 'My favorite movies' icon = {<ActionGrade color='#000'/>}/>
         <MenuItem linkTo = '/settings' text = 'Settings' icon = {<ActionSettings color='#000'/>}/>
       </List>
     </div>
   );
 };
-
-export default MenuList;
