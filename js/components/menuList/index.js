@@ -24,3 +24,5 @@ const MenuList = () => {
     </div>
   );
 };
+
+export default MenuList;
