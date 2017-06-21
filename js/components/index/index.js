@@ -1,8 +1,8 @@
 import React from 'react';
-import MenuList from '../menuList/';
+import MenuList from '../menuList';
 
 const Index = () => (
-  <MenuList/>
+  <MenuList />
 );
 
 export default Index;
