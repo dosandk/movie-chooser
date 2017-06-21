@@ -16,13 +16,23 @@ class Filter extends Component {
         top: 0,
         left: 0
       },
-      movieGenre: 1
+      movieGenre: 1,
+      sliderPoint: null
     };
 
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
+    this.handleSliderDragStop = this.handleSliderDragStop.bind(this);
     this.handleGenreChange = this.handleGenreChange.bind(this);
     this.renderGenresOptionList = this.renderGenresOptionList.bind(this);
+  }
+
+  componentDidMount() {
+    const sliderPoint = document.querySelector('[name=filterYear]').previousElementSibling.querySelectorAll('div');
+
+    this.setState({
+      sliderPoint: sliderPoint[sliderPoint.length - 1]
+    });
   }
 
   handleBtnClick() {
@@ -32,7 +42,13 @@ class Filter extends Component {
   handleSliderChange(e, value) {
     this.setState({
       filterYear: value,
-      sliderCoords: this.getCoords(e.target)
+      sliderCoords: this.getCoords(this.state.sliderPoint)
+    });
+  }
+
+  handleSliderDragStop() {
+    this.setState({
+      sliderCoords: this.getCoords(this.state.sliderPoint)
     });
   }
 
@@ -55,13 +71,7 @@ class Filter extends Component {
     return genres.map((genre, key) => <MenuItem value={key} primaryText={genre}/>);
   }
 
-  get fullYear() {
-    return new Date().getFullYear();
-  }
-
   render() {
-    console.error('full year', this.fullYear);
-
     return (
       <div className={styles.filter}>
         <TextField
@@ -79,12 +89,14 @@ class Filter extends Component {
           {this.state.filterYear}
         </div>}
         <Slider
+          name="filterYear"
           min={this.minYear}
           max={this.maxYear}
           step={1}
           defaultValue={2017}
           value={this.state.filterYear}
           onChange={this.handleSliderChange}
+          onDragStop={this.handleSliderDragStop}
         />
         <div className={styles['year-range']}>
           <div>{this.minYear}</div>

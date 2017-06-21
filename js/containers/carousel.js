@@ -14,12 +14,12 @@ class Carousel extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.movies !== nextProps.movies) {
-      this.props.actions.getMovie(nextProps.movies[0].imdbID);
+      this.props.actions.selectMovie(nextProps.movies[0]);
     }
   }
 
   renderCarouselList() {
-    return this.props.movies.map(movie => <CarouselItemContainer key={movie.imdbID} movie={movie}/>);
+    return this.props.movies.map(movie => <CarouselItemContainer key={movie.id} movie={movie}/>);
   }
 
   render() {
@@ -37,7 +37,7 @@ Carousel.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    movies: state.movies && state.movies.Search
+    movies: state.movies && state.movies.results
   };
 }
 
