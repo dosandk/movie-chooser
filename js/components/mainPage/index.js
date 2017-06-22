@@ -7,8 +7,8 @@ import styles from './mainPage.scss';
 const mainPage = () => {
   return (
     <div className={styles['main-page-wrapper']}>
-      <MovieDetailsContainer/>
-      <Filter/>
+        <MovieDetailsContainer/>
+        <Filter/>
       <Carousel movies={[]}/>
     </div>
   );
