@@ -1,11 +1,20 @@
 .main-page-wrapper {
   border: 2px solid red;
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
-  flex-flow: row wrap;
   padding: 10px;
-
+  // flex-flow: row wrap;
   & > *:last-child {
+    border: 1px solid #dddddd;
     flex: 1 100%;
+    max-height: 100px;
+    min-height: 100px;
   }
+}
+
+.movie-filter-wrapper {
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 10px;
 }
