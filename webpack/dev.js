@@ -30,7 +30,7 @@ module.exports = {
             loader: 'eslint-loader',
             query: {
               failOnWarning: false,
-              failOnError: true
+              failOnError: false
             }
           }
         ]
