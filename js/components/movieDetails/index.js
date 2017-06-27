@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './movieDetails.scss';
+import Poster from '../poster';
 
 const MovieDetails = ({movie}) => {
   return (
     <div className={styles['movie-details']}>
-      <div>Hello from MovieDetails</div>
       <div>{movie.Title}</div>
-      <img src={movie.Poster} />
+      <Poster movie={movie}/>
+      <div>Description</div>
     </div>
   );
 };
