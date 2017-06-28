@@ -1,7 +1,8 @@
 import React from 'react';
+import CollectionDetailsContainer from '../../containers/collectionDetails';
 
 const MoviesCollections = () => (
-    <div>MoviesCollections</div>
+    <CollectionDetailsContainer />
 );
 
 export default MoviesCollections;
