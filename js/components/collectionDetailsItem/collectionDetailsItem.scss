@@ -1,13 +1,41 @@
 .collection-item {
+    margin: 10px;
+    min-width: 260px;
+    text-align: center;
     width: 30%;
     
     img {
         height: 350px;
-        width: 80%;
+        width: 260px;
     }
 
     p {
-        text-align: center;
         line-height: 20px;
+    }
+
+    .movie-title {
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    .movie-description {
+        height: 60px;
+        overflow-y: hidden;
+        text-align: left;
+        position: relative;
+        &::after {
+            content: "";
+            text-align: right;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30%;
+            height: 1.2em;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+        }
+    }
+
+    .rating {
+        margin-top: 10px;
     }
 }

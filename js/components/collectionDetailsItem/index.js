@@ -5,9 +5,9 @@ const CollectionDetailsItem = ({movie}) => {
   return (
     <div className={styles['collection-item']}>
        <img src={movie.poster_path}/>
-       <p>{movie.title}</p>
-       <p>{movie.overview}</p>
-       <div>Rating: {movie.vote_average}</div>
+       <p className={styles['movie-title']}>{movie.title}</p>
+       <p className={styles['movie-description']}>{movie.overview}</p>
+       <div className={styles['rating']}>Rating: {movie.vote_average}</div>
     </div>
   );
 };
