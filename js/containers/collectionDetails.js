@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-// import { bindActionCreators } from 'redux';
 import {connect} from 'react-redux';
 import CollectionDetailsItemContainer from './collectionDetailsItem';
-// import * as collectionsActions from '../actions/moviesCollections';
-// import movies from '../api/movies.mock';
 
 class CollectionDetailsContainer extends Component {
   constructor(props) {
@@ -25,8 +22,4 @@ class CollectionDetailsContainer extends Component {
 }
 
 const mapStateToProps = ({moviesCollections}) => ({moviesCollections});
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators(collectionsActions, dispatch);
-// }
 export default connect(mapStateToProps, null)(CollectionDetailsContainer);
