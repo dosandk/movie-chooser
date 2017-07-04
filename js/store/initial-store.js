@@ -2,7 +2,7 @@ import movies from '../api/movies.mock';
 
 const initialStore = {
   favoriteMovies: [],
-  moviesCollections: [movies],
+  moviesCollections: movies.results,
   movies: {
     Search: []
   },
