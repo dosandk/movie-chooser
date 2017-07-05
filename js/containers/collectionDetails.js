@@ -6,7 +6,7 @@ class CollectionDetailsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showCount: 6
+      showCount: 9
     };
 
     this.onScroll = this.onScroll.bind(this);
@@ -23,7 +23,7 @@ class CollectionDetailsContainer extends Component {
     const bottomScroll = this.elToScroll.scrollHeight - this.elToScroll.scrollTop - this.elToScroll.clientHeight;
 
     if (bottomScroll <= valForLoading) {
-      this.setState({showCount: this.state.showCount + 6});
+      this.setState({showCount: this.state.showCount + 9});
     }
   }
 
@@ -36,11 +36,15 @@ class CollectionDetailsContainer extends Component {
   }
 
   get itemsList() {
-    // TODO: optimization
-    const result = this.collection.slice(0, this.state.showCount)
-      .map(movie => <CollectionDetailsItemContainer key={movie.id} movie={movie}/>);
+    return this.collection
+      .map((movie, index) => {
+        let result;
 
-    return result;
+        if (index < this.state.showCount) {
+          result = (<CollectionDetailsItemContainer key={movie.id} movie={movie}/>);
+        }
+        return result;
+      });
   }
 
   render() {

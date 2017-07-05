@@ -1,16 +1,24 @@
 .collection-item {
+    border: 1px solid #ffffff;
+    box-sizing: border-box;
     margin: 10px;
     min-width: 260px;
+    padding: 15px;
     text-align: center;
     width: 30%;
-    
+    &:hover {
+        border: 1px solid #dddddd;
+        box-shadow: 0 0 10px #dddddd;
+    }
+
     img {
-        height: 350px;
-        width: 260px;
+        height: 360px;
+        width: 250px;
     }
 
     p {
         line-height: 20px;
+        font-size: 15px;
     }
 
     .movie-title {
