@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {Route} from 'react-router-dom';
+import {goBack} from 'react-router-redux';
 import CollectionDetailsItemContainer from './collectionDetailsItem';
+import MovieInfo from '../components/movieInfo';
 
 class CollectionDetailsContainer extends Component {
   constructor(props) {
@@ -41,7 +45,7 @@ class CollectionDetailsContainer extends Component {
         let result;
 
         if (index < this.state.showCount) {
-          result = (<CollectionDetailsItemContainer key={movie.id} movie={movie}/>);
+          result = (<CollectionDetailsItemContainer key={movie.id} movie={movie} match={this.props.match}/>);
         }
         return result;
       });
@@ -56,11 +60,17 @@ class CollectionDetailsContainer extends Component {
       }
       }>
         {this.itemsList}
+        <Route path={`${this.props.match.url}/:movieId`}
+          render={
+            ({match}) => <MovieInfo goBack={this.props.goBack} movie={this.collection.find(el => el.id === +match.params.movieId)}/>
+          }
+        />
       </div>
     );
   }
 }
 
 const mapStateToProps = ({moviesCollections}) => ({moviesCollections});
+const mapDispatchToProps = dispatch => bindActionCreators({goBack}, dispatch);
 
-export default connect(mapStateToProps, null)(CollectionDetailsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionDetailsContainer);

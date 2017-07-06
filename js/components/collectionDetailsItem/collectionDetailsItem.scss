@@ -1,17 +1,11 @@
 .collection-item {
-    border: 1px solid #ffffff;
     box-sizing: border-box;
-    margin: 10px;
-    min-width: 260px;
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    width: 30%;
-    &:hover {
-        border: 1px solid #dddddd;
-        box-shadow: 0 0 10px #dddddd;
-    }
-
+    width: 100%;
     img {
+        align-self: center;
         height: 360px;
         width: 250px;
     }
