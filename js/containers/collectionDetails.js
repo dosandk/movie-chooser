@@ -14,6 +14,7 @@ class CollectionDetailsContainer extends Component {
     };
 
     this.onScroll = this.onScroll.bind(this);
+    this.routeRender = this.routeRender.bind(this);
   }
 
   get collection() {
@@ -22,11 +23,16 @@ class CollectionDetailsContainer extends Component {
     return moviesCollections;
   }
 
+  get bottomScroll() {
+    const {scrollHeight, scrollTop, clientHeight} = this.elToScroll;
+
+    return scrollHeight - scrollTop - clientHeight;
+  }
+
   onScroll() {
     const valForLoading = 50;
-    const bottomScroll = this.elToScroll.scrollHeight - this.elToScroll.scrollTop - this.elToScroll.clientHeight;
 
-    if (bottomScroll <= valForLoading) {
+    if (this.bottomScroll <= valForLoading) {
       this.setState({showCount: this.state.showCount + 9});
     }
   }
@@ -51,19 +57,28 @@ class CollectionDetailsContainer extends Component {
       });
   }
 
+  routeRender({match}) {
+    const getMovie = el => el.id === parseInt(match.params.movieId, 10);
+
+    return (
+      <MovieInfo
+        goBack={this.props.goBack}
+        movie={this.collection.find(getMovie)}
+      />
+    );
+  }
+
   render() {
     return (
       <div className={this.props.className}
-      onScroll={this.onScroll}
-      ref={el => {
-        this.elToScroll = el;
-      }
+        onScroll={this.onScroll}
+        ref={el => {
+          this.elToScroll = el;
+        }
       }>
         {this.itemsList}
         <Route path={`${this.props.match.url}/:movieId`}
-          render={
-            ({match}) => <MovieInfo goBack={this.props.goBack} movie={this.collection.find(el => el.id === +match.params.movieId)}/>
-          }
+          render={this.routeRender}
         />
       </div>
     );

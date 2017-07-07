@@ -1,7 +1,7 @@
 .movie-info {
-    background-color: #ffffff;
-    border: 1px solid #dddddd;
-    box-shadow: 0 0 15px #dddddd;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 15px #ddd;
     bottom: 0;
     display: flex;
     height: 60%;
@@ -22,7 +22,7 @@
         width: 90%;
     }
 
-    img {
+    .poster {
         margin-right: 15px;
         max-width: 310px;
 
@@ -33,11 +33,11 @@
          }
     }
 
-    figcaption {
+    .text-info {
         position: relative;
     }
 
-    svg {
+    .close-icon {
         position: absolute;
         right: 0;
         @media screen and (max-width: 414px){
@@ -49,9 +49,10 @@
         font-size: 18px;
         line-height: 25px;
         margin: 10px;
-        &:first-of-type {
-            font-size: 20px;
-            font-weight: 600;
-        }
+    }
+
+     .movie-title {
+        font-size: 20px;
+        font-weight: 600;
     }
 }
