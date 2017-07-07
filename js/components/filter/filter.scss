@@ -1,9 +1,13 @@
 .filter {
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 4px;
   flex: 1 auto;
   padding: 0 15px;
+
+    @media screen and (max-width: 414px){
+      order: -1;
+    }
 
   .slider-value {
     position: fixed;

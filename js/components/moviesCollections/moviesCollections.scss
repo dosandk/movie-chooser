@@ -6,9 +6,9 @@
     overflow-y: auto;
 
     a {
-        border: 1px solid #ffffff;
+        border: 1px solid #fff;
         box-sizing: border-box;
-        color: #000000;
+        color: #000;
         margin: 10px;
         min-width: 280px;
         padding: 15px;
@@ -16,8 +16,8 @@
         width: 30%;
         
         &:hover {
-            border: 1px solid #dddddd;
-            box-shadow: 0 0 10px #dddddd;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px #ddd;
         }
 
         @media screen and (max-width: 350px){
