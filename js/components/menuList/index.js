@@ -23,7 +23,7 @@ class MenuList extends Component {
   }
 
   get menuItems() {
-    return menu.map(item => <MenuItem linkTo={item.link} text={item.text} icon={item.icon}/>);
+    return menu.map((item, i) => <MenuItem key={i} linkTo={item.link} text={item.text} icon={item.icon}/>);
   }
 
   render() {

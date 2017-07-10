@@ -9,10 +9,10 @@ import MovieInfo from '../components/movieInfo';
 class CollectionDetailsContainer extends Component {
   constructor(props) {
     super(props);
+    this.itemsListGrowthIndex = 9;
     this.state = {
-      showCount: 9
+      showCount: this.itemsListGrowthIndex
     };
-
     this.onScroll = this.onScroll.bind(this);
     this.routeRender = this.routeRender.bind(this);
   }
@@ -24,16 +24,20 @@ class CollectionDetailsContainer extends Component {
   }
 
   get bottomScroll() {
+    const bottomScroll = clientHeight => {
+      return (scrollHeight, scrollTop) => scrollHeight - scrollTop - clientHeight;
+    };
     const {scrollHeight, scrollTop, clientHeight} = this.elToScroll;
+    const elementBottomScroll = bottomScroll(clientHeight);
 
-    return scrollHeight - scrollTop - clientHeight;
+    return elementBottomScroll(scrollHeight, scrollTop);
   }
 
   onScroll() {
     const valForLoading = 50;
 
     if (this.bottomScroll <= valForLoading) {
-      this.setState({showCount: this.state.showCount + 9});
+      this.setState(state => ({showCount: state.showCount + this.itemsListGrowthIndex}));
     }
   }
 
@@ -47,14 +51,8 @@ class CollectionDetailsContainer extends Component {
 
   get itemsList() {
     return this.collection
-      .map((movie, index) => {
-        let result;
-
-        if (index < this.state.showCount) {
-          result = (<CollectionDetailsItemContainer key={movie.id} movie={movie} match={this.props.match}/>);
-        }
-        return result;
-      });
+      .filter((movie, index) => index < this.state.showCount)
+      .map(movie => (<CollectionDetailsItemContainer key={movie.id} movie={movie} match={this.props.match}/>));
   }
 
   routeRender({match}) {
