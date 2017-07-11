@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styles from './filter.scss';
-import {TextField, Slider, SelectField, MenuItem} from 'material-ui';
+import {TextField, Slider, SelectField, MenuItem, RaisedButton} from 'material-ui';
 import genres from '../../config/genres-config';
 
 class Filter extends Component {
@@ -60,8 +60,6 @@ class Filter extends Component {
   }
 
   render() {
-    console.error('full year', this.fullYear);
-
     return (
       <div className={styles.filter}>
         <TextField
@@ -96,7 +94,13 @@ class Filter extends Component {
         >
           {this.renderGenresOptionList()}
         </SelectField>
-        <button onClick={this.handleBtnClick}>Search</button>
+        <RaisedButton
+          label='Search'
+          backgroundColor='#5cb85c'
+          labelColor='#fff'
+          className={styles['search-btn']}
+          onClick={this.handleBtnClick}
+        />
       </div>
     );
   }

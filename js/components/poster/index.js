@@ -13,7 +13,7 @@ const Poster = ({movie}) => {
   return (
     <div className={styles['poster-wrapper']}>
       <ActionThumbUp color='#3ad913' style={iconStyles}/>
-      <img src={movie.Poster} />
+      <img src={movie.Poster} className={styles['poster-image']}/>
       <ActionThumbDown color='#ff2429' style={iconStyles}/>
     </div>
   );

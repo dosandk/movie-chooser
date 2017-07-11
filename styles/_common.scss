@@ -4,8 +4,9 @@
 
 body, html {
   height: 100%;
+  overflow: hidden;
 }
 
-div[data-reactroot] {
+.general-wrapper {
   display: flex;
 }
