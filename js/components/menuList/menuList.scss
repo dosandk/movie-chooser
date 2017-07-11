@@ -9,13 +9,18 @@
 }
 
 .menu-list {
+    min-width: 250px;
     overflow: hidden;
-    width: 100%;
-    transition-property: width;
-    transition-duration: 300ms;
-    transition-timing-function: linear;
+
+    @media screen and (max-width: 414px){
+        transition-duration: 300ms;
+        transition-property: width;
+        transition-timing-function: linear;
+        width: 100%;
+    }
 }
 
 .menu-list--hidden {
+    overflow: hidden;
     width: 0;
 }
