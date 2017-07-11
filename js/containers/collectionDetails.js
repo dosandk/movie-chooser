@@ -5,15 +5,17 @@ import {Route} from 'react-router-dom';
 import {goBack} from 'react-router-redux';
 import CollectionDetailsItemContainer from './collectionDetailsItem';
 import MovieInfo from '../components/movieInfo';
+import {debounce} from '../utils/debounce';
 
 class CollectionDetailsContainer extends Component {
   constructor(props) {
     super(props);
     this.itemsListGrowthIndex = 9;
     this.state = {
-      showCount: this.itemsListGrowthIndex
+      showCount: this.itemsListGrowthIndex,
+      clientHeight: ''
     };
-    this.onScroll = this.onScroll.bind(this);
+    this.onScroll = debounce(this.onScroll.bind(this), 300);
     this.routeRender = this.routeRender.bind(this);
   }
 
@@ -24,13 +26,13 @@ class CollectionDetailsContainer extends Component {
   }
 
   get bottomScroll() {
-    const bottomScroll = clientHeight => {
+    const createBottomScrollGetter = clientHeight => {
       return (scrollHeight, scrollTop) => scrollHeight - scrollTop - clientHeight;
     };
-    const {scrollHeight, scrollTop, clientHeight} = this.elToScroll;
-    const elementBottomScroll = bottomScroll(clientHeight);
+    const {scrollHeight, scrollTop} = this.elToScroll;
+    const getElementBottomScroll = createBottomScrollGetter(this.state.clientHeight);
 
-    return elementBottomScroll(scrollHeight, scrollTop);
+    return getElementBottomScroll(scrollHeight, scrollTop);
   }
 
   onScroll() {
@@ -43,6 +45,7 @@ class CollectionDetailsContainer extends Component {
 
   componentDidMount() {
     this.elToScroll.addEventListener('scroll', this.onScroll);
+    this.setState({clientHeight: this.elToScroll.clientHeight});
   }
 
   componentWillUnmount() {
@@ -69,7 +72,6 @@ class CollectionDetailsContainer extends Component {
   render() {
     return (
       <div className={this.props.className}
-        onScroll={this.onScroll}
         ref={el => {
           this.elToScroll = el;
         }

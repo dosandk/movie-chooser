@@ -98,6 +98,7 @@ class Filter extends Component {
           label='Search'
           backgroundColor='#5cb85c'
           labelColor='#fff'
+          className={styles['search-btn']}
           onClick={this.handleBtnClick}
         />
       </div>

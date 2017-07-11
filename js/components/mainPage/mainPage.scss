@@ -5,6 +5,8 @@
   flex-grow: 1;
   padding: 10px;
     @media screen and (max-width: 414px){
+      box-sizing: border-box;
+      display: block;
       height: 100vh;
       overflow-y: auto;
     }
