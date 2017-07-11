@@ -3,11 +3,8 @@ export { debounce };
 function debounce(fn, wait) {
   let timeout;
 
-  return () => {
-    const context = this;
-    const args = arguments;
-
+  return (...args) => {
     clearTimeout(timeout);
-    timeout = setTimeout(() => fn.apply(context, args), wait);
+    timeout = setTimeout(() => fn.apply(fn, args), wait);
   };
 }
