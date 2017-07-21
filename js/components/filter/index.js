@@ -68,7 +68,7 @@ class Filter extends Component {
   }
 
   renderGenresOptionList() {
-    return genres.map((genre, key) => <MenuItem value={key} primaryText={genre}/>);
+    return genres.map((genre, key) => <MenuItem key={key} value={key} primaryText={genre}/>);
   }
 
   render() {

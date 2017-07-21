@@ -3,7 +3,7 @@ import React from 'react';
 const CarouselItem = ({movieItem, onItemClick}) => {
   return (
     <div onClick={onItemClick}>
-      {movieItem.Title}
+      {movieItem.title}
     </div>
   );
 };

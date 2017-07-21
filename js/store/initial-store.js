@@ -1,15 +1,25 @@
 import movies from '../api/movies.mock';
 
 const initialStore = {
-  favoriteMovies: [],
   moviesCollections: movies.results,
-  movies: {
-    Search: []
-  },
   selectedMovie: {
     Title: '',
     Poster: null
-  }
+  },
+  movies,
+  selectedMovie: movies.results[0],
+  currentVoting: {
+    allMovies: [],
+    chosenMovies: []
+  },
+  isVotingFinished: false,
+  votingHistory: {
+    [new Date()]: {
+      allMovies: [],
+      chosenMovies: []
+    }
+  },
+  favouriteMovies: []
 };
 
 export default initialStore;
