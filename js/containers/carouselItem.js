@@ -21,15 +21,11 @@ class CarouselItemContainer extends Component {
     this.props.actions.movieDislike(this.props.movie.id);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log(nextProps, nextState);
-    return true;
-  }
-
   render() {
     return (
       <CarouselItem
         movieItem={this.props.movie}
+        votingRate={this.props.votingRate}
         onItemClick={this.onClickHandler}
         onItemRemove={this.onRemoveHandler}
       />
@@ -39,6 +35,7 @@ class CarouselItemContainer extends Component {
 
 CarouselItemContainer.propTypes = {
   movie: PropTypes.object.isRequired,
+  votingRate: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
 };
 

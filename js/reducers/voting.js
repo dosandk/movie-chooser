@@ -1,6 +1,7 @@
 import {MOVIE_ITEM_LIKE, MOVIE_ITEM_DISLIKE} from '../constants/movieItem';
 import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE} from '../constants/votingHistory';
 import {MOVIE_ITEM_SELECT_MOVIE} from '../constants/movieItem';
+import {FILTER_REQUEST_SUCCESS} from '../constants/filter';
 
 export default {
   [MOVIE_ITEM_LIKE]: (state, {payload}) => {
@@ -71,6 +72,23 @@ export default {
           }
           return Object.assign({}, item, {selectedMovie: payload.movie});
         })
+      }
+      );
+  },
+  [FILTER_REQUEST_SUCCESS]: (state, {payload}) => {
+    return Object.assign(
+      {},
+      {
+        allMovies: payload.movies.results,
+        currentVotingIndex: 0,
+        isVotingFinished: false,
+        votingHistory: [
+          {
+            allMovies: [...payload.movies.results.keys()],
+            chosenMovies: [],
+            selectedMovie: payload.movies.results[0]
+          }
+        ],
       }
       );
   }

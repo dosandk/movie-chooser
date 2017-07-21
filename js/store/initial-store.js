@@ -13,7 +13,7 @@ const initialStore = {
         chosenMovies: [],
         selectedMovie: movies.results[0],
       }
-    ],
+    ]
   },
 
   favouriteMovies: []

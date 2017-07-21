@@ -8,4 +8,9 @@
     height: 500px;
     width: 40%;
   }
+
+  .disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
 }

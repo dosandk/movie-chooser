@@ -19,7 +19,7 @@ class Carousel extends Component {
   }
 
   renderCarouselList() {
-    return this.props.movies.map(movie => <CarouselItemContainer key={movie.id} movie={movie}/>);
+    return this.props.movies.map(movie => <CarouselItemContainer key={movie.id} movie={movie} votingRate={movie.votingRate}/>);
   }
 
   render() {
@@ -41,9 +41,7 @@ function mapStateToProps(state) {
 
   return {
     movies: state.voting.allMovies.filter((item, index) => {
-      if (chosenMovies.includes(index)) {
-        item.votingRate += 1;
-      }
+      item.votingRate = chosenMovies.includes(index) ? 1 : 0;
       return currentMovies.includes(index);
     })
   };
