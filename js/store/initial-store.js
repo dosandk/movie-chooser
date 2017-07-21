@@ -1,24 +1,21 @@
 import movies from '../api/movies.mock';
+movies.results.length = 10;
 
 const initialStore = {
   moviesCollections: movies.results,
-  selectedMovie: {
-    Title: '',
-    Poster: null
+  voting: {
+    allMovies: movies.results,
+    currentVotingIndex: 0,
+    isVotingFinished: false,
+    votingHistory: [
+      {
+        allMovies: [...movies.results.keys()],
+        chosenMovies: [],
+        selectedMovie: movies.results[0],
+      }
+    ],
   },
-  movies,
-  selectedMovie: movies.results[0],
-  currentVoting: {
-    allMovies: [],
-    chosenMovies: []
-  },
-  isVotingFinished: false,
-  votingHistory: {
-    [new Date()]: {
-      allMovies: [],
-      chosenMovies: []
-    }
-  },
+
   favouriteMovies: []
 };
 

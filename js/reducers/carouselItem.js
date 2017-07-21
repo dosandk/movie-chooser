@@ -1,7 +1,7 @@
-import {CAROUSEL_ITEM_SELECT_MOVIE} from '../constants/carouselItem';
+import {MOVIE_ITEM_SELECT_MOVIE} from '../constants/movieItem';
 
 export default {
-  [CAROUSEL_ITEM_SELECT_MOVIE]: (state, {payload}) => {
+  [MOVIE_ITEM_SELECT_MOVIE]: (state, {payload}) => {
     return payload.movie;
   }
 };

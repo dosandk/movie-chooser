@@ -3,7 +3,7 @@ import styles from './poster.scss';
 import ActionThumbDown from 'material-ui/svg-icons/action/thumb-down';
 import ActionThumbUp from 'material-ui/svg-icons/action/thumb-up';
 
-const Poster = ({movie}) => {
+const Poster = ({movie, movieLikeHandler, movieDislikeHandler}) => {
   const iconStyles = {
     margin: 'auto 25px',
     height: '75px',
@@ -12,9 +12,13 @@ const Poster = ({movie}) => {
 
   return (
     <div className={styles['poster-wrapper']}>
-      <ActionThumbUp color='#3ad913' style={iconStyles}/>
+      <div onClick={movieLikeHandler}>
+        <ActionThumbUp color='#3ad913' style={iconStyles}/>
+      </div>
       <img src={`https://image.tmdb.org/t/p/w500/${movie['poster_path']}`} className={styles['poster-image']} />
-      <ActionThumbDown color='#ff2429' style={iconStyles}/>
+      <div onClick={movieDislikeHandler}>
+        <ActionThumbDown color='#ff2429' style={iconStyles}/>
+      </div>
     </div>
   );
 };

@@ -55,7 +55,10 @@ function searchMovies(query) {
         return response.json()
           .then(data => {
             dispath(hideLoader());
-            return dispath(filterRequestFinished(data));
+
+            const extendedData = extendDataWithExtraProperties(data);
+
+            return dispath(filterRequestFinished(extendedData));
           });
       })
       .catch(error => {
@@ -64,4 +67,13 @@ function searchMovies(query) {
         return error.text().then(text => dispath(filterRequestError(text)));
       });
   };
+}
+
+function extendDataWithExtraProperties(data) {
+  const extendedMovies = data.results.map(item => {
+    item.votingRate = 0;
+    return item;
+  });
+
+  return Object.assign(data, {results: extendedMovies});
 }

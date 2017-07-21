@@ -2,8 +2,14 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as carouselItemActions from '../actions/carouselItem';
+import * as movieActions from '../actions/movieItem';
 import CarouselItemContainer from './carouselItem';
+
+const wrapper = {
+  display: 'flex',
+  justifyContent: 'space-around',
+  padding: '10px'
+};
 
 class Carousel extends Component {
   constructor(props) {
@@ -12,19 +18,13 @@ class Carousel extends Component {
     this.renderCarouselList = this.renderCarouselList.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.movies !== nextProps.movies) {
-      this.props.actions.selectMovie(nextProps.movies[0]);
-    }
-  }
-
   renderCarouselList() {
     return this.props.movies.map(movie => <CarouselItemContainer key={movie.id} movie={movie}/>);
   }
 
   render() {
     return (
-      <div>
+      <div style={wrapper}>
         {this.renderCarouselList()}
       </div>
     );
@@ -36,14 +36,22 @@ Carousel.propTypes = {
 };
 
 function mapStateToProps(state) {
+  const currentMovies = state.voting.votingHistory[state.voting.currentVotingIndex].allMovies;
+  const chosenMovies = state.voting.votingHistory[state.voting.currentVotingIndex].chosenMovies;
+
   return {
-    movies: state.movies && state.movies.results
+    movies: state.voting.allMovies.filter((item, index) => {
+      if (chosenMovies.includes(index)) {
+        item.votingRate += 1;
+      }
+      return currentMovies.includes(index);
+    })
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(carouselItemActions, dispatch)
+    actions: bindActionCreators(movieActions, dispatch)
   };
 }
 
