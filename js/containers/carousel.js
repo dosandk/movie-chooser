@@ -39,13 +39,15 @@ function mapStateToProps(state) {
   const currentMovies = state.voting.votingHistory[state.voting.currentVotingIndex].allMovies;
   const chosenMovies = state.voting.votingHistory[state.voting.currentVotingIndex].chosenMovies;
 
+  const movies = state.voting.allMovies.filter((item, index) => {
+    if (chosenMovies.includes(index)) {
+      item.votingRate += 1;
+    }
+    return currentMovies.includes(index);
+  });
+
   return {
-    movies: state.voting.allMovies.filter((item, index) => {
-      if (chosenMovies.includes(index)) {
-        item.votingRate += 1;
-      }
-      return currentMovies.includes(index);
-    })
+    movies: movies.map(item => Object.assign({}, item))
   };
 }
 
