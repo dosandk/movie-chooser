@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import VotingHistory from '../components/votingHistory';
-import * as historyActions from '../actions/votingHistory';
+import * as historyActions from '../actions/voting';
 
 class VotingHistoryContainer extends Component {
   render() {

@@ -1,5 +1,5 @@
 import {MOVIE_ITEM_LIKE, MOVIE_ITEM_DISLIKE} from '../constants/movieItem';
-import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE} from '../constants/votingHistory';
+import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE, VOTING_FINISHED} from '../constants/voting';
 import {MOVIE_ITEM_SELECT_MOVIE} from '../constants/movieItem';
 import {FILTER_REQUEST_SUCCESS} from '../constants/filter';
 
@@ -10,6 +10,7 @@ export default {
     newChosenMoviesArray.push(state.allMovies.findIndex(item => item.id === payload.movieId));
     const newAllMoviesVotingHistory = state.votingHistory[state.currentVotingIndex].allMovies.slice();
     const newVotingHistoryArray = state.votingHistory.filter((item, index) => index <= state.currentVotingIndex);
+    const isVotingFinished = newAllMoviesVotingHistory.length === 1 && newChosenMoviesArray.length === 1;
 
     newVotingHistoryArray.push(Object.assign(
       {},
@@ -25,6 +26,7 @@ export default {
       state,
       {
         currentVotingIndex: state.currentVotingIndex + 1,
+        isVotingFinished,
         votingHistory: newVotingHistoryArray
       }
     );
@@ -36,6 +38,7 @@ export default {
     newChosenMoviesArray.splice(state.allMovies.findIndex(item => item.id === payload.movieId), 1);
     const newAllMoviesVotingHistory = state.votingHistory[state.currentVotingIndex].allMovies.filter(item => item !== dislikeItemIndex);
     const newVotingHistoryArray = state.votingHistory.filter((item, index) => index <= state.currentVotingIndex);
+    const isVotingFinished = newAllMoviesVotingHistory.length === 1 && newChosenMoviesArray.length === 1;
 
     newVotingHistoryArray.push(Object.assign(
       {},
@@ -51,6 +54,7 @@ export default {
       state,
       {
         currentVotingIndex: state.currentVotingIndex + 1,
+        isVotingFinished,
         votingHistory: newVotingHistoryArray
       }
     );
@@ -73,7 +77,7 @@ export default {
           return Object.assign({}, item, {selectedMovie: payload.movie});
         })
       }
-      );
+    );
   },
   [FILTER_REQUEST_SUCCESS]: (state, {payload}) => {
     return Object.assign(
@@ -88,8 +92,15 @@ export default {
             chosenMovies: [],
             selectedMovie: payload.movies.results[0]
           }
-        ],
+        ]
       }
-      );
+    );
+  },
+  [VOTING_FINISHED]: state => {
+    return Object.assign(
+      {},
+      state,
+      {isVotingFinished: false}
+    );
   }
 };
