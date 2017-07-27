@@ -30,18 +30,16 @@ class MovieDetailsContainer extends Component {
 
 MovieDetailsContainer.propTypes = {
   movie: PropTypes.object.isRequired,
-  votingRate: PropTypes.number.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-  const movie = state.voting.votingHistory[state.voting.currentVotingIndex].selectedMovie;
-  const currentMovieIndex = state.voting.allMovies.findIndex(item => item.id === movie.id);
+  const movieId = state.voting.votingHistory[state.currentVotingIndex].selectedMovie;
+  // const currentMovieIndex = state.voting.allMovies.findIndex(item => item.id === movie.id);
 
-  movie.votingRate = state.voting.votingHistory[state.voting.currentVotingIndex].chosenMovies.includes(currentMovieIndex) ? 1 : 0;
+  // movie.votingRate = state.voting.votingHistory[state.currentVotingIndex].chosenMovies.includes(currentMovieIndex) ? 1 : 0;
   return {
-    movie,
-    votingRate: movie.votingRate
+    movie: state.voting.allMovies.find(item => item.id === movieId)
   };
 }
 

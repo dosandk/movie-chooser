@@ -1,5 +1,5 @@
 import {MOVIE_ITEM_LIKE, MOVIE_ITEM_DISLIKE} from '../constants/movieItem';
-import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE, VOTING_FINISHED} from '../constants/voting';
+import {VOTING_FINISHED} from '../constants/voting';
 import {MOVIE_ITEM_SELECT_MOVIE} from '../constants/movieItem';
 import {FILTER_REQUEST_SUCCESS} from '../constants/filter';
 
@@ -25,7 +25,6 @@ export default {
       {},
       state,
       {
-        currentVotingIndex: state.currentVotingIndex + 1,
         isVotingFinished,
         votingHistory: newVotingHistoryArray
       }
@@ -53,17 +52,10 @@ export default {
       {},
       state,
       {
-        currentVotingIndex: state.currentVotingIndex + 1,
         isVotingFinished,
         votingHistory: newVotingHistoryArray
       }
     );
-  },
-  [PREVIOUS_VOTING_STATE]: state => {
-    return Object.assign({}, state, {currentVotingIndex: state.currentVotingIndex - 1});
-  },
-  [NEXT_VOTING_STATE]: state => {
-    return Object.assign({}, state, {currentVotingIndex: state.currentVotingIndex + 1});
   },
   [MOVIE_ITEM_SELECT_MOVIE]: (state, {payload}) => {
     return Object.assign(
@@ -84,7 +76,6 @@ export default {
       {},
       {
         allMovies: payload.movies.results,
-        currentVotingIndex: 0,
         isVotingFinished: false,
         votingHistory: [
           {

@@ -3,19 +3,18 @@ movies.results.length = 10;
 
 const initialStore = {
   moviesCollections: movies.results,
+  currentVotingIndex: 0,
   voting: {
     allMovies: movies.results,
-    currentVotingIndex: 0,
     isVotingFinished: false,
     votingHistory: [
       {
-        allMovies: [...movies.results.keys()],
+        allMovies: [...movies.results.map(item => item.id)],
         chosenMovies: [],
-        selectedMovie: movies.results[0],
+        selectedMovie: movies.results[0].id,
       }
     ]
   },
-
   favouriteMovies: []
 };
 

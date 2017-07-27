@@ -36,8 +36,8 @@ Carousel.propTypes = {
 };
 
 function mapStateToProps(state) {
-  const currentMovies = state.voting.votingHistory[state.voting.currentVotingIndex].allMovies;
-  const chosenMovies = state.voting.votingHistory[state.voting.currentVotingIndex].chosenMovies;
+  const currentMovies = state.voting.votingHistory[state.currentVotingIndex].allMovies;
+  const chosenMovies = state.voting.votingHistory[state.currentVotingIndex].chosenMovies;
 
   return {
     movies: state.voting.allMovies.filter((item, index) => {
