@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import * as votingActions from '../actions/voting';
+import * as votingActions from '../actions/votingHistory';
 
 class PopupContainer extends Component {
   constructor(props) {
@@ -71,9 +71,11 @@ PopupContainer.propTypes = {
   isVotingFinished: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = ({voting: {isVotingFinished}}) => {
+const mapStateToProps = ({votingHistory}) => {
+  const currentVotingHistory = votingHistory[votingHistory.length - 1];
+
   return {
-    isVotingFinished
+    isVotingFinished: currentVotingHistory.allMovies.length === 1 && currentVotingHistory.chosenMovies.length === 1
   };
 };
 const mapDispatchToProps = dispatch => {

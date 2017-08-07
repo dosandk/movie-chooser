@@ -1,5 +1,5 @@
 import {MOVIE_ITEM_LIKE, MOVIE_ITEM_DISLIKE} from '../constants/movieItem';
-import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE} from '../constants/voting';
+import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE} from '../constants/votingHistory';
 import {FILTER_REQUEST_SUCCESS} from '../constants/filter';
 
 export default {

@@ -1,16 +1,18 @@
 import { combineReducers } from 'redux';
 import loader from './loader';
 import moviesCollections from './moviesCollections';
-import voting from './voting';
+import votingHistory from './votingHistory';
 import currentVotingIndex from './votingIndex';
+import allMovies from './allMovies';
 import { createReducers } from '../utils/createReducers';
 import { routerReducer } from 'react-router-redux';
 
 const reducers = {
+  allMovies,
   currentVotingIndex,
   loader,
   moviesCollections,
-  voting
+  votingHistory
 };
 const rootReducer = combineReducers(Object.assign({}, createReducers(reducers), { router: routerReducer }));
 

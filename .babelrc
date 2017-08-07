@@ -2,11 +2,12 @@
   "presets": [
     ["es2015", {"modules": false}],
     "react",
-    "stage-1"
+    "stage-1",
+    "stage-2"
   ],
   "plugins": [
       "transform-runtime",
-      "transform-object-rest-spread"
+      ["transform-object-rest-spread", {"useBuiltIns": true}]
   ],
   "env": {
     "test": {

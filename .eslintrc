@@ -246,6 +246,7 @@
     "react"
   ],
   /* React */
-  "jsx-no-duplicate-props": [2]
+  "jsx-no-duplicate-props": [2],
+  "parser": "babel-eslint"
 //  "extends": ["eslint:all", "plugin:react/all"]
 }

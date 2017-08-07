@@ -1,4 +1,4 @@
-import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE, VOTING_FINISHED} from '../constants/voting';
+import {PREVIOUS_VOTING_STATE, NEXT_VOTING_STATE, VOTING_FINISHED} from '../constants/votingHistory';
 
 export {
   votingBack,

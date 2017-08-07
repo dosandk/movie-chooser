@@ -7,28 +7,43 @@ export {
 };
 
 function movieLike(movieId) {
-  return {
-    type: MOVIE_ITEM_LIKE,
-    payload: {
-      movieId
-    }
+  return (dispatch, getState) => {
+    const store = getState();
+
+    dispatch({
+      type: MOVIE_ITEM_LIKE,
+      payload: {
+        movieId,
+        currentVotingIndex: store.currentVotingIndex
+      }
+    });
   };
 }
 
 function movieDislike(movieId) {
-  return {
-    type: MOVIE_ITEM_DISLIKE,
-    payload: {
-      movieId
-    }
+  return (dispatch, getState) => {
+    const store = getState();
+
+    dispatch({
+      type: MOVIE_ITEM_DISLIKE,
+      payload: {
+        movieId,
+        currentVotingIndex: store.currentVotingIndex
+      }
+    });
   };
 }
 
-function selectMovie(movie) {
-  return {
-    type: MOVIE_ITEM_SELECT_MOVIE,
-    payload: {
-      movie
-    }
+function selectMovie(movieId) {
+  return (dispatch, getState) => {
+    const store = getState();
+
+    dispatch({
+      type: MOVIE_ITEM_SELECT_MOVIE,
+      payload: {
+        movieId,
+        currentVotingIndex: store.currentVotingIndex
+      }
+    });
   };
 }

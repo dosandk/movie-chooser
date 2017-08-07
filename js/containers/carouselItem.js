@@ -14,7 +14,9 @@ class CarouselItemContainer extends Component {
   }
 
   onClickHandler() {
-    this.props.actions.selectMovie(this.props.movie);
+    if (this.props.selectedMovieId !== this.props.movie.id) {
+      this.props.actions.selectMovie(this.props.movie.id);
+    }
   }
 
   onRemoveHandler() {
@@ -25,7 +27,6 @@ class CarouselItemContainer extends Component {
     return (
       <CarouselItem
         movieItem={this.props.movie}
-        votingRate={this.props.votingRate}
         onItemClick={this.onClickHandler}
         onItemRemove={this.onRemoveHandler}
       />
@@ -34,9 +35,9 @@ class CarouselItemContainer extends Component {
 }
 
 CarouselItemContainer.propTypes = {
+  actions: PropTypes.object.isRequired,
   movie: PropTypes.object.isRequired,
-  votingRate: PropTypes.number.isRequired,
-  actions: PropTypes.object.isRequired
+  selectedMovieId: PropTypes.number.isRequired
 };
 
 function mapDispatchToProps(dispatch) {
